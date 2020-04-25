@@ -42,7 +42,7 @@ defmodule ReactRenderDemo.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:react_render, github: "harmon25/elixir_react_render", branch: "react-router-ssr"}
+      {:react_render, github: "harmon25/elixir_react_render", branch: "loadable"}
     ]
   end
 

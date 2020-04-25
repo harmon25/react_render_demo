@@ -12,6 +12,7 @@ import "../css/app.scss";
 import React from "react";
 import ClientContainer from "./containers/ClientContainer";
 import { hydrateRoot } from "react_render/priv/client";
+import { loadableReady } from "@loadable/component";
 
 // can do whatever with these data attributes, but this is how the phoenix server encodes data to be accessed by react
 // kindof limiteded to only serliazable json in this form however...
@@ -24,5 +25,8 @@ const Main = () => {
   return <ClientContainer {...elixirProps} />;
 };
 
-// this is ran as apposed to render.
-hydrateRoot(Main, "react-root");
+//
+loadableReady(() => {
+  // this is ran as apposed to render.
+  hydrateRoot(Main, "react-root");
+});
