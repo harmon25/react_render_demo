@@ -1,31 +1,74 @@
 /* This file is for your main application css. */
-@import "./phoenix.css";
+@import "./milligram.css";
 
-/* Alerts and form errors */
-.alert {
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 4px;
+body {
+  color: #606c76;
+  font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 1.6em;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  line-height: 1.6;
 }
-.alert-info {
-  color: #31708f;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
+
+.navigation {
+  background: #f4f5f6;
+  border-bottom: 0.1rem solid #d1d1d1;
+  display: block;
+  height: 5.2rem;
+  left: 0;
+  max-width: 100%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
-.alert-warning {
-  color: #8a6d3b;
-  background-color: #fcf8e3;
-  border-color: #faebcc;
+
+.navigation .container {
+  padding-bottom: 0;
+  padding-top: 0;
 }
-.alert-danger {
-  color: #a94442;
-  background-color: #f2dede;
-  border-color: #ebccd1;
+
+.wrapper .container {
+  max-width: 80rem;
 }
-.alert p {
+
+.container {
+  margin: 0 auto;
+  max-width: 112rem;
+  padding: 0 2rem;
+  position: relative;
+  width: 100%;
+}
+
+.navigation .navigation-list {
+  list-style: none;
   margin-bottom: 0;
+  margin-right: 5rem;
 }
-.alert:empty {
-  display: none;
+
+.navigation .navigation-item {
+  float: left;
+  margin-bottom: 0;
+  margin-left: 2.5rem;
+  position: relative;
+}
+
+.float-right {
+  float: right;
+}
+
+.navigation .navigation-link,
+.navigation .navigation-title,
+.navigation .title {
+  display: inline;
+  font-size: 1.6rem;
+  line-height: 5.2rem;
+  padding: 0;
+  text-decoration: none;
+}
+
+.wrapper > .container {
+  padding-bottom: 7.5rem;
+  padding-top: 7.5rem;
 }
