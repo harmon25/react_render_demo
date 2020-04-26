@@ -1,10 +1,10 @@
 import React from "react";
-
+import Counter from "../components/Counter";
 const IndexPage = () => {
   return (
     <div className="container">
       <h2> Index </h2>
-      <p> Some awesome content.</p>
+      <Counter />
     </div>
   );
 };
