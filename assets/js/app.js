@@ -16,13 +16,12 @@ import { hydrateRoot } from "react_render/priv/client";
 // can do whatever with these data attributes, but this is how the phoenix server encodes data to be accessed by react
 // kindof limiteded to only serliazable json in this form however...
 // think it might be worth trying to inject a inline script along with the react root container component that could be used to inject more complex js state?
-const initialState = JSON.parse(
-  document.getElementById("react-root").dataset.initialstate
+const elixirProps = JSON.parse(
+  document.getElementById("react-root").dataset.props
 );
-const props = JSON.parse(document.getElementById("react-root").dataset.props);
 
 const Main = () => {
-  return <ClientContainer {...props} />;
+  return <ClientContainer {...elixirProps} />;
 };
 
 // this is ran as apposed to render.
