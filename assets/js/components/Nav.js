@@ -18,7 +18,7 @@ const Nav = () => {
             <a
               className="navigation-link"
               target="_blank"
-              href="https://github.com/harmon25/react_render_demo/tree/react_router"
+              href="https://github.com/harmon25/react_render_demo"
             >
               Github
             </a>

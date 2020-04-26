@@ -10,7 +10,19 @@ defmodule ReactRenderDemo.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      releases: [
+        local: [
+          include_erts: false,
+          applications: [runtime_tools: :permanent],
+          steps: [:assemble, &copy_assets/1]
+        ],
+        linode: [
+          include_executables_for: [:unix],
+          applications: [runtime_tools: :permanent],
+          steps: [:assemble, &copy_assets/1, :tar]
+        ]
+      ]
     ]
   end
 
@@ -56,5 +68,13 @@ defmodule ReactRenderDemo.MixProject do
     [
       setup: ["deps.get", "cmd npm install --prefix assets"]
     ]
+  end
+
+  # we need the assets directory in the release for server side rendering
+  defp copy_assets(rel) do
+    path = Path.join([rel.path, "lib", "react_render_demo-#{rel.version}", "priv", "assets"])
+    File.mkdir_p(path)
+    File.cp_r!("./assets", path)
+    rel
   end
 end

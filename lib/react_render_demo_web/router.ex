@@ -32,6 +32,13 @@ defmodule ReactRenderDemoWeb.Router do
       pipe_through :browser
       live_dashboard "/dashboard", metrics: ReactRenderDemoWeb.Telemetry
     end
+  else
+    import Phoenix.LiveDashboard.Router
+    # do some kinda auth on this ?
+    scope "/" do
+      pipe_through :browser
+      live_dashboard "/dashboard", metrics: ReactRenderDemoWeb.Telemetry
+    end
   end
 
   scope "/", ReactRenderDemoWeb do
