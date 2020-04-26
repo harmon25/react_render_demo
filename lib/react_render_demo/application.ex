@@ -2,10 +2,20 @@ defmodule ReactRenderDemo.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
-
+  @mix_env Mix.env()
   use Application
 
   def start(_type, _args) do
+    react_render_opts =
+      if @mix_env in [:dev, :test] do
+        [render_service_path: "#{File.cwd!()}/assets", pool_size: 4]
+      else
+        [
+          render_service_path: Application.app_dir(:react_render_demo, "priv/assets"),
+          pool_size: 4
+        ]
+      end
+
     children = [
       # Start the Telemetry supervisor
       ReactRenderDemoWeb.Telemetry,
@@ -13,9 +23,7 @@ defmodule ReactRenderDemo.Application do
       {Phoenix.PubSub, name: ReactRenderDemo.PubSub},
       %{
         id: ReactRender,
-        start:
-          {ReactRender, :start_link,
-           [[render_service_path: "#{File.cwd!()}/assets", pool_size: 4]]},
+        start: {ReactRender, :start_link, [react_render_opts]},
         type: :supervisor
       },
       # Start the Endpoint (http/https)
