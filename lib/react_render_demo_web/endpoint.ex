@@ -16,6 +16,12 @@ defmodule ReactRenderDemoWeb.Endpoint do
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 
+  if Mix.env() == :dev do
+    socket "/logger-socket", ReactRenderDemoWeb.LoggerSocket,
+      websocket: true,
+      longpoll: false
+  end
+
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phx.digest

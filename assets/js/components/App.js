@@ -5,6 +5,7 @@ import pages from "../pages";
 import Nav from "./Nav";
 
 const App = () => {
+  console.log("APP Component", "another arg");
   return (
     <>
       <main className="wrapper">
